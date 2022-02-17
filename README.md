@@ -1,3 +1,4 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=7057225&assignment_repo_type=AssignmentRepo)
 # Introduction
 This test is to evaluate the proficiency of essential technical skills required for this job. You are going to extend the Meteor React-based Todo sample application (*Todo app*). The Meteor installation guide, a step-by-step tutorial about the Todo app, and the GitHub repository of the Todo app source code can be found here:
  - Meteor installation: https://www.meteor.com/install
