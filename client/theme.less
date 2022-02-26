@@ -9,40 +9,127 @@
 }
 
 .wrapper {
-    width: 450px;
-    min-height: 650px;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-width: 100%;
+    padding: 0 5px;
+    &-content {
+        height: 700px;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        position: relative;
+        .task-content {
+            margin: 0 15px;
+            height: auto;
+            &-analytics {
+                display: flex;
+                justify-content: space-around;
+                background: linear-gradient(
+                    rgb(255, 255, 255) 0%,
+                    rgb(217, 223, 255) 100%
+                );
+                border-radius: 5px;
+                padding: 10px 0;
+                margin-top: -38px;
+                box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+                    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+                span {
+                    display: block;
+                    text-align: center;
+                }
 
-    .task-content {
-        margin: 0 15px;
-        height: auto;
-        &-analytics {
-            display: flex;
-            justify-content: space-around;
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 10px 0;
-            margin-top: -38px;
-            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-                rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-            span {
-                display: block;
+                .analytics-count {
+                    font-size: 1.3em;
+                    font-weight: bold;
+                }
+                .analytics-text {
+                    font-size: 1em;
+                    color: #7d8597;
+                    text-transform: capitalize;
+                }
             }
-            .analytics-overdue,
-            .analytics-overdue,
-            .analytics-completed,
-            .analytic-duetoday {
-                text-align: center;
+            .dropdown-filter {
+                margin-top: 15px;
+                div.ant-select-selector {
+                    background: linear-gradient(
+                        rgb(255, 255, 255) 0%,
+                        rgb(217, 223, 255) 100%
+                    );
+                }
             }
-            .analytics-count {
-                font-size: 1.3em;
-                font-weight: bold;
+
+            &-list {
+                overflow: auto;
+                max-height: 460px;
+
+                &-item {
+                    margin: 15px 0;
+                    padding: 5px 15px;
+                    border-radius: 5px;
+                    background: rgba(15, 14, 71, 0.3);
+                    box-shadow: rgb(255 255 255 / 20%) 0px 0px 0px 0.5px inset;
+                    transition: all 0.8s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+                    &:hover {
+                        background: rgba(68, 66, 178, 0.1);
+                    }
+
+                    &-status {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        color: #7d8597;
+                        text-transform: lowercase;
+                        font-size: 1em;
+
+                        &-title {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 5px;
+                            &-circle {
+                                content: " ";
+                                display: inline-block;
+                                margin-right: 10px;
+                                width: 10px;
+                                height: 10px;
+                                -moz-border-radius: 7.5px;
+                                -webkit-border-radius: 7.5px;
+                                border-radius: 7.5px;
+                            }
+                        }
+                        &-date {
+                            font-size: 0.9em;
+                            letter-spacing: 2px;
+                        }
+                    }
+
+                    &-content {
+                        &-title {
+                            font-size: 1.1em;
+                            font-weight: 500;
+                            color: #fff;
+                        }
+                        div.ant-typography {
+                            color: #7d8597;
+                            font-size: 0.9em;
+                        }
+                    }
+                }
             }
-            .analytics-text {
-                font-size: 1em;
-                color: #7d8597;
-                text-transform: capitalize;
+        }
+        .footer-info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background: linear-gradient(
+                209.21deg,
+                rgb(94, 44, 141) 13.57%,
+                rgb(211, 49, 137) 98.38%
+            );
+
+            &-author {
+                font-size: 0.9em;
             }
         }
     }
@@ -83,4 +170,49 @@
             }
         }
     }
+}
+
+.task-drawer {
+    div.ant-drawer-content {
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        background-color: #1f1f47;
+        .ant-drawer-header {
+            color: #e8e8e8;
+            border-bottom: none;
+            background: linear-gradient(
+                209.21deg,
+                rgb(94, 44, 141) 13.57%,
+                rgb(211, 49, 137) 98.38%
+            );
+            .ant-drawer-title {
+                color: #e8e8e8;
+            }
+        }
+    }
+
+    .ant-input,
+    .ant-picker {
+        background: linear-gradient(
+            rgba(24, 32, 79, 0.4) 0%,
+            rgba(24, 32, 79, 0.4) 100%
+        );
+        border: 1px solid rgb(255 255 255 / 20%);
+        color: #e8e8e8;
+        border-radius: 5px;
+
+        input,
+        span {
+            color: #e8e8e8;
+        }
+    }
+}
+
+.ant-drawer-top .ant-drawer-content-wrapper,
+.ant-drawer-bottom .ant-drawer-content-wrapper {
+    max-width: 450px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

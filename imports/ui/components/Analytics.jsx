@@ -9,7 +9,7 @@ const Analytics = () => {
             </div>
             <div className="ç">
                 <span className="analytics-count">10</span>
-                <span className="analytics-text">todo</span>
+                <span className="analytics-text">Undone</span>
             </div>
             <div className="analytics-completed">
                 <span className="analytics-count">10</span>
