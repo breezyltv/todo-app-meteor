@@ -44,6 +44,6 @@ Meteor.startup(() => {
     }
     // add some tags
     if (TagsCollection.find().count() === 0) {
-        TagsCollection.insert({ tags: ["project", "personal", "work"] });
+        TagsCollection.insertOne({ tags: ["project", "personal", "work"] });
     }
 });

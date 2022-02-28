@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 import { TagsCollection } from "/imports/api/TagsCollection";
 import { TasksCollection } from "/imports/api/TasksCollection";
 import { Button, Input, Drawer, Form, DatePicker, Select, Space } from "antd";
-import { PlusSquareOutlined, CalendarOutlined } from "@ant-design/icons";
+import {
+    PlusSquareOutlined,
+    CalendarOutlined,
+    UndoOutlined,
+} from "@ant-design/icons";
 const { Option } = Select;
 import moment from "moment";
 const TaskAction = () => {
     const tagsData = useTracker(() => TagsCollection.find({}).fetch());
+    const formRef = createRef();
     const [form] = Form.useForm();
     const [visible, setVisible] = useState(false);
     const showDrawer = () => {
@@ -32,7 +37,7 @@ const TaskAction = () => {
     };
 
     const onReset = () => {
-        form.resetFields();
+        formRef.current.resetFields();
     };
 
     return (
@@ -106,13 +111,19 @@ const TaskAction = () => {
                     </Form.Item>
                     <Form.Item>
                         <div className="task-drawer-button">
-                            <Button htmlType="button" onClick={onReset}>
+                            <Button
+                                htmlType="button"
+                                icon={<UndoOutlined />}
+                                onClick={onReset}
+                            >
                                 Reset
                             </Button>
                             <Button
                                 type="primary"
                                 htmlType="submit"
                                 className="task-form-button"
+                                icon={<PlusSquareOutlined />}
+                                block
                             >
                                 Create
                             </Button>

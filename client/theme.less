@@ -267,6 +267,25 @@
             margin-right: 15px;
         }
     }
+
+    &-deadline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .ant-switch {
+            background: linear-gradient(
+                rgba(99, 106, 150, 0.4) 0%,
+                rgba(182, 186, 214, 0.25) 100%
+            );
+        }
+        label {
+            margin: 0 10px;
+            color: #e8f0fe;
+        }
+        .ant-switch-checked {
+            background: #16db93;
+        }
+    }
 }
 
 .ant-drawer-top .ant-drawer-content-wrapper,
