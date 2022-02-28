@@ -10,10 +10,16 @@ const DropdownFilter = () => {
 
     return (
         <Row className="dropdown-filter" justify="end">
-            <Select placeholder="Filter" onChange={onChange} size="small">
-                <Option value="jack">Date</Option>
+            <Select
+                placeholder="Filter By"
+                onChange={onChange}
+                size="small"
+                style={{ width: 100 }}
+            >
+                <Option value="jack">Completed</Option>
                 <Option value="lucy">Undone</Option>
                 <Option value="tom">Overdue</Option>
+                <Option value="tom">Due Today</Option>
             </Select>
         </Row>
     );

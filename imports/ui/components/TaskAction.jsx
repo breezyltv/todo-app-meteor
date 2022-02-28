@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Button, Input, Drawer, Form, DatePicker } from "antd";
+import { useTracker } from "meteor/react-meteor-data";
+import { TagsCollection } from "/imports/api/TagsCollection";
+import { TasksCollection } from "/imports/api/TasksCollection";
+import { Button, Input, Drawer, Form, DatePicker, Select, Space } from "antd";
 import { PlusSquareOutlined, CalendarOutlined } from "@ant-design/icons";
+const { Option } = Select;
 import moment from "moment";
 const TaskAction = () => {
+    const tagsData = useTracker(() => TagsCollection.find({}).fetch());
+    const [form] = Form.useForm();
     const [visible, setVisible] = useState(false);
     const showDrawer = () => {
         setVisible(true);
@@ -13,7 +19,20 @@ const TaskAction = () => {
     };
 
     const onTaskFinish = (task) => {
-        console.log(task);
+        //console.log(task);
+        //console.log(task.dueDate.toDate());
+        //insert task to database
+        TasksCollection.insert({
+            ...task,
+            dueDate: task.dueDate.toDate(),
+            isDone: false,
+            status: "todo",
+        });
+        setVisible(false);
+    };
+
+    const onReset = () => {
+        form.resetFields();
     };
 
     return (
@@ -25,7 +44,7 @@ const TaskAction = () => {
             </aside>
             <Drawer
                 placement="bottom"
-                width={500}
+                height={500}
                 onClose={onClose}
                 visible={visible}
                 title="Create new task"
@@ -43,6 +62,7 @@ const TaskAction = () => {
                         rules={[
                             {
                                 required: true,
+                                message: "Title can not be blank!",
                             },
                         ]}
                     >
@@ -54,23 +74,49 @@ const TaskAction = () => {
                     <Form.Item name="note">
                         <Input.TextArea placeholder="note..." rows={4} />
                     </Form.Item>
-                    <Form.Item name="dueDate">
+                    <Form.Item
+                        name="dueDate"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please select task's due date!",
+                            },
+                        ]}
+                    >
                         <DatePicker
                             disabledDate={(current) =>
                                 current && current < moment().startOf("day")
                             }
                             format="MM/DD/YYYY"
+                            placeholder="Due Date"
                         />
                     </Form.Item>
-                    <Form.Item>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            className="task-form-button"
-                            block
+                    <Form.Item name="tags">
+                        <Select
+                            mode="tags"
+                            style={{ width: "100%" }}
+                            placeholder="add tags"
                         >
-                            Create
-                        </Button>{" "}
+                            {tagsData &&
+                                tagsData[0] &&
+                                tagsData[0].tags.map((tag) => (
+                                    <Option value={tag}>{tag}</Option>
+                                ))}
+                        </Select>
+                    </Form.Item>
+                    <Form.Item>
+                        <div className="task-drawer-button">
+                            <Button htmlType="button" onClick={onReset}>
+                                Reset
+                            </Button>
+                            <Button
+                                type="primary"
+                                htmlType="submit"
+                                className="task-form-button"
+                            >
+                                Create
+                            </Button>
+                        </div>
                     </Form.Item>
                 </Form>
             </Drawer>

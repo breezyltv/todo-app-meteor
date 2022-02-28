@@ -7,13 +7,13 @@ import Footer from "./components/Footer";
 
 export const App = () => {
     const tasks = useTracker(() => TasksCollection.find({}).fetch());
-    console.log(tasks);
+
     return (
         <div className="container">
             <div className="wrapper">
                 <div className="wrapper-content">
                     <Header />
-                    <TaskContent />
+                    <TaskContent tasks={tasks} />
                     <Footer />
                 </div>
             </div>

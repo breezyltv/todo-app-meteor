@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import { TasksCollection } from "/imports/api/TasksCollection";
+import { TagsCollection } from "/imports/api/TagsCollection";
 import { randomDate, getStatus } from "./utils";
 
 const mockTasks = [
@@ -34,11 +35,15 @@ Meteor.startup(() => {
     if (TasksCollection.find().count() === 0) {
         mockTasks.forEach((task) => {
             //create fake due date and status
-            const newRandomDate = randomDate("02/20/2022", "03/29/2022");
+            const newRandomDate = randomDate("02/16/2022", "03/29/2022");
             task.dueDate = new Date(newRandomDate);
             task.status = getStatus(newRandomDate);
             //insert to TasksCollection
             TasksCollection.insert(task);
         });
+    }
+    // add some tags
+    if (TagsCollection.find().count() === 0) {
+        TagsCollection.insert({ tags: ["project", "personal", "work"] });
     }
 });
