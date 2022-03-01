@@ -5,6 +5,7 @@ import { TasksCollection } from "/imports/api/TasksCollection";
 import { Button, Input, Drawer, Form, DatePicker, Select, Space } from "antd";
 import {
     PlusSquareOutlined,
+    PlusSquareFilled,
     CalendarOutlined,
     UndoOutlined,
 } from "@ant-design/icons";
@@ -37,14 +38,15 @@ const TaskAction = () => {
     };
 
     const onReset = () => {
-        formRef.current.resetFields();
+        form.resetFields();
+        //formRef.current.resetFields();
     };
 
     return (
         <>
             <aside className="task-action">
-                <Button type="link" ghost onClick={showDrawer}>
-                    <PlusSquareOutlined />
+                <Button type="link" onClick={showDrawer}>
+                    <PlusSquareFilled />
                 </Button>
             </aside>
             <Drawer
@@ -60,6 +62,7 @@ const TaskAction = () => {
                     name="addTask"
                     className="task-form"
                     onFinish={onTaskFinish}
+                    form={form}
                 >
                     <Form.Item
                         name="title"
@@ -104,8 +107,10 @@ const TaskAction = () => {
                         >
                             {tagsData &&
                                 tagsData[0] &&
-                                tagsData[0].tags.map((tag) => (
-                                    <Option value={tag}>{tag}</Option>
+                                tagsData[0].tags.map((tag, idx) => (
+                                    <Option key={idx} value={tag}>
+                                        {tag}
+                                    </Option>
                                 ))}
                         </Select>
                     </Form.Item>

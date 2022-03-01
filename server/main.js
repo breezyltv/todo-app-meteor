@@ -34,7 +34,7 @@ Meteor.startup(() => {
     // If the Links collection is empty, add some data.
     if (TasksCollection.find().count() === 0) {
         mockTasks.forEach((task) => {
-            //create fake due date and status
+            //create random fake due date and status
             const newRandomDate = randomDate("02/16/2022", "03/29/2022");
             task.dueDate = new Date(newRandomDate);
             task.status = getStatus(newRandomDate);

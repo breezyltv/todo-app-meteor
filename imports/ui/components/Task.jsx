@@ -86,9 +86,9 @@ const Task = ({ task }) => {
                         {task.tags &&
                             task.tags.map((tag, idx, arr) => {
                                 if (idx !== arr.length - 1) {
-                                    return <a>{tag}, </a>;
+                                    return <a key={idx}>{tag}, </a>;
                                 } else {
-                                    return <a>{tag} </a>;
+                                    return <a key={idx}>{tag} </a>;
                                 }
                             })}
                     </span>

@@ -53,10 +53,21 @@ const TaskDetail = ({
         if (arrTags === undefined || arrTags.length === 0) return;
 
         arrTags.forEach((tag) => {
-            if (tagsData.includes(tag.toLowerCase())) {
-                TasksCollection.update(tagsData._id, { $push: { tags: tag } });
+            //check if tag exist in database
+            if (!tagsData.includes(tag)) {
+                //console.log("is work?", tag, tagsData[0]._id);
+                TagsCollection.update(
+                    { _id: tagsData[0]._id },
+                    {
+                        $push: { tags: tag },
+                    }
+                );
             }
         });
+    };
+
+    const onDelete = () => {
+        TasksCollection.remove(task._id);
     };
 
     return (
@@ -71,7 +82,12 @@ const TaskDetail = ({
                         {task.displayStatus[1]}
                     </Tag>
                 }
-                extra={<CalendarOutlined />}
+                extra={
+                    <span>
+                        <CalendarOutlined />{" "}
+                        {moment(new Date(task.dueDate)).format("MM/DD/YY")}
+                    </span>
+                }
                 className="task-drawer"
             >
                 <Form
@@ -146,8 +162,10 @@ const TaskDetail = ({
                         >
                             {tagsData &&
                                 tagsData[0] &&
-                                tagsData[0].tags.map((tag) => (
-                                    <Option value={tag}>{tag}</Option>
+                                tagsData[0].tags.map((tag, idx) => (
+                                    <Option key={idx} value={tag}>
+                                        {tag}
+                                    </Option>
                                 ))}
                         </Select>
                     </Form.Item>
@@ -158,6 +176,7 @@ const TaskDetail = ({
                                 type="primary"
                                 icon={<DeleteOutlined />}
                                 danger
+                                onClick={onDelete}
                             >
                                 Delete
                             </Button>
@@ -169,7 +188,7 @@ const TaskDetail = ({
                                 block
                                 disabled={task.isDone}
                             >
-                                Update
+                                Save
                             </Button>
                         </div>
                     </Form.Item>
