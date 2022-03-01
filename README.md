@@ -18,15 +18,25 @@ Your second task is to suggest and implement *one* feature that could **improve 
 
 # Description of new features
 Please write a description of the new feature:
+## Features:
+This simple todo app manage tasks, it can create a task with due date, add tags, can set task complete by using switch. - A new sheet will popup in the bottom when click + button on top right of main page.
+- Can update or delete a task by clicking in to the task's title.
+- Can filter task by some feature such as "overdue", "undone", "completed" and "due today".
+- Can order by date.
+- I added a switch button to easy set a task complete, will have highlight by color for status condition.
+- I have showed some demo below for convenience.
 ## Technologies:
 - React.js framework
 - Functional component
 - UI framework: Ant Design
 - Responsive design.
 
-## Features:
-Main App layout:\
+## Demos:
+- Main App layout:\
 ![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/todo.png?raw=true)
-
+- Add a task:\
+![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/addtaskaction.gif?raw=true)
+- Update a task:\
+![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/set-task-complete-in-detail.gif?raw=true)
 # Submission
 Please submit your code within **2 weeks** after we sent you the invitation link. Upon completion of the test, you can send the repo URL to [Dr. Ricky Mok](mailto:cskpmok@caida.org) with the title "Web developer REU test submission - *your name*".
