@@ -41,5 +41,14 @@ This is a simple todo app to manages tasks
 ![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/addtaskaction.gif?raw=true)
 - Update a task:\
 ![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/set-task-complete-in-detail.gif?raw=true)
+
+- Filter and order by:\
+  ![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/filteraction.gif?raw=true)
+
+## How to run:
+- clone the project and run this command below to install dependencies.\
+`meteor npm install`
+- Run:\
+`meteor run`
 # Submission
 Please submit your code within **2 weeks** after we sent you the invitation link. Upon completion of the test, you can send the repo URL to [Dr. Ricky Mok](mailto:cskpmok@caida.org) with the title "Web developer REU test submission - *your name*".
