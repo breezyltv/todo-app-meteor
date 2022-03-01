@@ -34,7 +34,32 @@ const TaskAction = () => {
             isDone: false,
             status: "todo",
         });
+
+        //insert tags into database
+        if (TagsCollection.find().count() === 0) {
+            TagsCollection.insert({ tags: task.tags });
+        } else {
+            insertTag(task.tags);
+        }
+
         setVisible(false);
+    };
+
+    const insertTag = (arrTags) => {
+        if (arrTags === undefined || arrTags.length === 0) return;
+
+        arrTags.forEach((tag) => {
+            //check if tag exist in database
+            if (!tagsData[0].tags.includes(tag)) {
+                //console.log("is work?", tag, tagsData[0]._id);
+                TagsCollection.update(
+                    { _id: tagsData[0]._id },
+                    {
+                        $push: { tags: tag },
+                    }
+                );
+            }
+        });
     };
 
     const onReset = () => {

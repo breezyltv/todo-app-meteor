@@ -40,7 +40,7 @@ const TaskContent = ({ tasks }) => {
                     if (filterBy === "undone") {
                         return task.status === "todo";
                     }
-                    if (task.isDone) {
+                    if (filterBy === "completed") {
                         return task.isDone;
                     }
                     const dueDate = moment(new Date(task.dueDate)).format(
@@ -56,12 +56,12 @@ const TaskContent = ({ tasks }) => {
     };
 
     const getTasksFilter = tasksFilter(tasks);
-    console.log(getTasksFilter);
+    //console.log(getTasksFilter);
     return (
         <div className="task-content">
             <Analytics tasks={tasks} />
             <DropdownFilter setOrderBy={setOrderBy} setFilterBy={setFilterBy} />
-            {tasks ? (
+            {!tasks === undefined || tasks.length > 0 ? (
                 <div className="task-content-list">
                     {getTasksFilter.map((task) => (
                         <Task key={task._id} task={task} />

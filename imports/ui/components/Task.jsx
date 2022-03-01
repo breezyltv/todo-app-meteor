@@ -15,7 +15,7 @@ const Task = ({ task }) => {
         setVisible(true);
     };
 
-    const status = displayStatus(task.status, task.isDone);
+    const status = displayStatus(task, TasksCollection);
 
     const onSwitchTaskChange = () => {
         //console.log(task._id);

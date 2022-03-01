@@ -33,10 +33,10 @@ const TaskDetail = ({
         setVisible(false);
     };
     const onTaskFinish = (taskData) => {
-        console.log("update", taskData);
+        //console.log("update", taskData);
 
         //insert tags into database
-        insertTag(task.tags);
+        insertTag(taskData.tags);
 
         //update task to database
         TasksCollection.update(task._id, {
@@ -51,11 +51,11 @@ const TaskDetail = ({
 
     const insertTag = (arrTags) => {
         if (arrTags === undefined || arrTags.length === 0) return;
-
+        //console.log(arrTags, tagsData[0].tags);
         arrTags.forEach((tag) => {
             //check if tag exist in database
-            if (!tagsData.includes(tag)) {
-                //console.log("is work?", tag, tagsData[0]._id);
+            if (!tagsData[0].tags.includes(tag)) {
+                console.log("is work?", tag, tagsData[0].tags);
                 TagsCollection.update(
                     { _id: tagsData[0]._id },
                     {
