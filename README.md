@@ -18,6 +18,15 @@ Your second task is to suggest and implement *one* feature that could **improve 
 
 # Description of new features
 Please write a description of the new feature:
+## Technologies:
+- React.js framework
+- Functional component
+- UI framework: Ant Design
+- Responsive design.
+
+## Features:
+Main App layout:\
+![alt text](https://github.com/caida-ricky-classroom/web-developer-reu-test-breezyltv/blob/main/demo/todo.png?raw=true)
 
 # Submission
 Please submit your code within **2 weeks** after we sent you the invitation link. Upon completion of the test, you can send the repo URL to [Dr. Ricky Mok](mailto:cskpmok@caida.org) with the title "Web developer REU test submission - *your name*".
